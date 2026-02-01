@@ -1,0 +1,25 @@
+name: 🎫 Melon Ticket Monitor
+
+on:
+  # 1. 定时触发：核心功能，例如每5分钟检查一次
+  schedule:
+    - cron: '*/5 * * * *'
+  # 2. 手动触发：方便你随时测试
+  workflow_dispatch:
+
+jobs:
+  check-ticket:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚀 运行票务检查
+        # 关键：这里使用原版 Action，它会自动执行编译好的 index.js
+        uses: mooyoul/melon-ticket-actions@master
+        with:
+          # 你必须修改以下三个ID，从Melon网站获取
+          product-id: 'YOUR_PRODUCT_ID_HERE'      # 替换：演出ID
+          schedule-id: 'YOUR_SCHEDULE_ID_HERE'    # 替换：场次ID
+          seat-id: 'YOUR_SEAT_ID_HERE'            # 替换：座位ID
+          # 必须设置你的Slack Webhook
+          slack-incoming-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          # 可选：自定义通知消息
+          message: '🎫 티켓이 나왔습니다! 빠르게 확인하세요!'
