@@ -16,9 +16,9 @@ jobs:
         uses: mooyoul/melon-ticket-actions@master
         with:
           # 你必须修改以下三个ID，从Melon网站获取
-          product-id: 'YOUR_PRODUCT_ID_HERE'      # 替换：演出ID
-          schedule-id: 'YOUR_SCHEDULE_ID_HERE'    # 替换：场次ID
-          seat-id: 'YOUR_SEAT_ID_HERE'            # 替换：座位ID
+          product-id: '212698'      # 替换：演出ID
+          schedule-id: '100076'     # 替换：场次ID
+          seat-id: 'A12'            # 替换：座位ID
           # 必须设置你的Slack Webhook
           slack-incoming-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
           # 可选：自定义通知消息
